@@ -5,8 +5,16 @@ require('dotenv').config();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// ✅ FIXED: CORS with your Vercel domain
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://gig-flow-ruddy.vercel.app'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+}));
+
 app.use(express.json());
 
 // Test route BEFORE other routes
