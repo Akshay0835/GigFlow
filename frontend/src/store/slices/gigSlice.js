@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// ✅ FIXED: Changed /auth to /gigs
 const API_URL = import.meta.env.VITE_API_URL 
-  ? `${import.meta.env.VITE_API_URL}/auth` 
-  : 'http://localhost:5001/api/auth';
+  ? `${import.meta.env.VITE_API_URL}/gigs` 
+  : 'http://localhost:5001/api/gigs';
+
 axios.defaults.withCredentials = true;
 
 export const fetchGigs = createAsyncThunk(
