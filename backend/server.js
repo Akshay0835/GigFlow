@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ FIXED: CORS with your Vercel domain
+// CORS with your Vercel domain
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -44,8 +44,8 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected successfully'))
   .catch(err => console.log('❌ MongoDB connection error:', err));
 
-// 404 handler (should be LAST)
-app.use('*', (req, res) => {
+// 404 handler (should be LAST) - ✅ FIXED: Removed '*'
+app.use((req, res) => {
   res.status(404).json({ 
     message: 'Route not found',
     requestedPath: req.originalUrl 
